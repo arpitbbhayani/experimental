@@ -29,8 +29,9 @@ func fib2(n int) int {
 // The purpose is to demonstrate that network calls should not consume CPU cycles
 // significantly, but any CPU cycles consumed during the call should be visible in the profile.
 func httpCall() {
-	// fib1(40)  // Uncomment to induce a call to the fib function to consume some cycles
+	// fib1(40) // induce a call to the fib function to consume some cycles
 
+	// start := time.Now()
 	// Perform a network call to Google's homepage
 	r, err := http.Get("https://www.google.com")
 	if err != nil {
@@ -38,6 +39,7 @@ func httpCall() {
 		return
 	}
 	fmt.Println(r.StatusCode)
+	// fmt.Println("Time taken for just the http call:", time.Since(start))
 }
 
 func main() {
@@ -57,6 +59,4 @@ func main() {
 	defer pprof.StopCPUProfile()
 
 	fmt.Println(fib1(40))
-	// fmt.Println(fib2(40))
-	// httpCall()
 }
