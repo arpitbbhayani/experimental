@@ -1,0 +1,6 @@
+venv
+*.csv
+*.json
+*.pyc
+*.pyo
+.ipynb_checkpoints
