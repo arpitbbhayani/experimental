@@ -33,3 +33,16 @@ def generate_creator_data(transform_matrix, n_points=50, noise_std=0.1):
     next_videos = np.clip(next_videos, 0, 1)
     
     return current_videos, next_videos
+
+
+
+def _gen(k, mean, stddev):
+    return np.random.normal(mean, stddev, (k, 1))
+
+def generate_creators(count):
+    count = (count) // 2
+    tc = np.hstack([_gen(count, 0.8, 0.10), _gen(count, 0.2, 0.15)])
+    ec = np.hstack([_gen(count, 0.2, 0.1), _gen(count, 0.75, 0.1)])
+    return np.concatenate((tc, ec))
+
+creators = generate_creators(30)
