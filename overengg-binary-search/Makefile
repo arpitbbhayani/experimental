@@ -1,23 +1,23 @@
-run: run1 run2 run3 run4
+run: search1 search2 search3 search4 search5
 
-run1:
-	g++ -O0 utils.cpp main1.cpp -o main -lbenchmark -lpthread -Iinclude
+search1:
+	g++ -O0 main.cpp search1.cpp -o main -lbenchmark -lpthread -Iinclude
 	./main
 
-run2:
-	g++ -O0 utils.cpp main2.cpp -o main -lbenchmark -lpthread -Iinclude
+search2:
+	g++ -O0 main.cpp search2.cpp -o main -lbenchmark -lpthread -Iinclude
 	./main
 
-run3:
-	g++ -O0 utils.cpp main3.cpp -o main -lbenchmark -lpthread -Iinclude
+search3:
+	g++ -O0 main.cpp search3.cpp -o main -lbenchmark -lpthread -Iinclude
 	./main
 
-run4:
-	g++ -O0 utils.cpp main4.cpp -o main -lbenchmark -lpthread -Iinclude
+search4:
+	g++ -O0 main.cpp search4.cpp -o main -lbenchmark -lpthread -Iinclude
 	./main
 
-run5:
-	g++ -O0 -mavx2 utils.cpp main5.cpp -o main -lbenchmark -lpthread -Iinclude
+search5:
+	g++ -O0 -mavx2 main.cpp search5.cpp -o main -lbenchmark -lpthread -Iinclude
 	./main
 
 clean:
