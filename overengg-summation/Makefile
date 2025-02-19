@@ -17,7 +17,7 @@ sum4:
 	./main
 
 sum5:
-	g++ -O0 -fopenmp main.cpp sum5.cpp -o main -lbenchmark -lpthread -Iinclude
+	g++ -O0 -mavx2 main.cpp sum5.cpp -o main -lbenchmark -lpthread -Iinclude
 	./main
 
 clean:

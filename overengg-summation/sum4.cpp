@@ -13,6 +13,10 @@ int sum8(const int *arr, int size) {
     __m256i v_arr = _mm256_loadu_si256((const __m256i *)&arr[i]);
 
     // Creates a vector containing the indices (i, i+1, i+2, etc.)
+    // We have to reverse the order of the indices to match the order of the
+    // elements in the array. Given how the AVX2 instructions work
+    // (loadu_si256), the first element of the vector will be the last element
+    // of the array.
     __m256i v_indices =
         _mm256_set_epi32(i + 7, i + 6, i + 5, i + 4, i + 3, i + 2, i + 1, i);
 
