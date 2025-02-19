@@ -16,6 +16,10 @@ run4:
 	g++ -O0 utils.cpp main4.cpp -o main -lbenchmark -lpthread -Iinclude
 	./main
 
+run5:
+	g++ -O0 -mavx2 utils.cpp main5.cpp -o main -lbenchmark -lpthread -Iinclude
+	./main
+
 clean:
 	rm main
 
