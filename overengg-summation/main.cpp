@@ -9,7 +9,7 @@ static void BM_Sum(benchmark::State &state) {
   }
 
   for (auto _ : state) {
-    benchmark::DoNotOptimize(sum(arr, size));
+    benchmark::DoNotOptimize(sum8(arr, size));
   }
 
   delete[] arr;
@@ -17,3 +17,13 @@ static void BM_Sum(benchmark::State &state) {
 
 BENCHMARK(BM_Sum)->RangeMultiplier(8)->Range(8, 8 << 20);
 BENCHMARK_MAIN();
+
+// int main(int argc, char **argv) {
+//   int size = 8;
+//   int *arr = new int[size];
+//   for (int i = 0; i < size; i++) {
+//     arr[i] = i;
+//   }
+//   std::cout << sum8(arr, size) << std::endl;
+//   return 0;
+// }
