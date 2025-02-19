@@ -1,3 +1,6 @@
 [submodule "overengg-binary-search/benchmark"]
 	path = overengg-binary-search/benchmark
 	url = git@github.com:google/benchmark
+[submodule "overengg-summation/benchmark"]
+	path = overengg-summation/benchmark
+	url = git@github.com:google/benchmark
