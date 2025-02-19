@@ -1,4 +1,4 @@
-run: sum1 sum2
+run: sum1 sum2 sum3 sum4
 
 sum1:
 	g++ -O0 main.cpp sum1.cpp -o main -lbenchmark -lpthread -Iinclude
@@ -6,6 +6,14 @@ sum1:
 
 sum2:
 	g++ -O0 main.cpp sum2.cpp -o main -lbenchmark -lpthread -Iinclude
+	./main
+
+sum3:
+	g++ -O0 -mavx2 main.cpp sum3.cpp -o main -lbenchmark -lpthread -Iinclude
+	./main
+
+sum4:
+	g++ -O0 -fopenmp main.cpp sum4.cpp -o main -lbenchmark -lpthread -Iinclude
 	./main
 
 clean:
