@@ -15,5 +15,5 @@ static void BM_BinarySearch(benchmark::State &state) {
   delete[] arr;
 }
 
-BENCHMARK(BM_BinarySearch)->RangeMultiplier(2)->Range(8, 8 << 10);
+BENCHMARK(BM_BinarySearch)->RangeMultiplier(8)->Range(8, 8 << 20);
 BENCHMARK_MAIN();
