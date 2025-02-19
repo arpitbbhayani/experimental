@@ -1,7 +1,11 @@
-run: sum1
+run: sum1 sum2
 
 sum1:
 	g++ -O0 main.cpp sum1.cpp -o main -lbenchmark -lpthread -Iinclude
+	./main
+
+sum2:
+	g++ -O0 main.cpp sum2.cpp -o main -lbenchmark -lpthread -Iinclude
 	./main
 
 clean:
