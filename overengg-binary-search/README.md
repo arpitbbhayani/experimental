@@ -1,10 +1,8 @@
 Over-engineering Binary Search
+===
 
-```
-$ make run1
-```
-
-## Development
+Setting up locally requires you setup `google/benchmark` lib
+and that can be done by running the following commands.
 
 ```
 $ cd benchmark
@@ -14,7 +12,17 @@ $ make -j$(nproc)
 $ sudo make install
 ```
 
-### Linter and formatter
+Once that is run, you can execute the benchmarks across
+all approaches using the following command
+
+```
+$ make run
+```
+
+To make it easy to understand and quantify, I plotted the benchmark
+results in a [spreadsheet, take a look](https://docs.google.com/spreadsheets/d/1pczvPGXTjOK7_3qYwfVa0U5XakAdoixIo6IFXQ42oPc/edit?usp=sharing).
+
+## Linter and formatter
 
 ```
 $ sudo apt update

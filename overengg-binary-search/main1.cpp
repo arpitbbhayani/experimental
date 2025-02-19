@@ -6,11 +6,13 @@ int _binarySearch(const int arr[], int target, int left, int right) {
   }
 
   int mid = (left + right) / 2;
-  if (arr[mid] == target) {
+  int current = arr[mid];
+
+  if (current == target) {
     return mid;
   }
 
-  if (arr[mid] > target) {
+  if (current > target) {
     return _binarySearch(arr, target, left, mid - 1);
   }
   return _binarySearch(arr, target, mid + 1, right);
