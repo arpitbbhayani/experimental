@@ -7,29 +7,32 @@ int sum8(const int *arr, int size) {
   int sum = 0;
   int i = 0;
 
-  __m256i total_sum = _mm256_setzero_si256();
-  __m256i base_indices = _mm256_set_epi32(7, 6, 5, 4, 3, 2, 1, 0);
-
   for (; i < size; i += 8) { // Process 8 elements at a time
     // __m256i is a 256-bit vector that can hold 8 32-bit integers
     // loads 8 consecutive integers from memory into the vector
     __m256i v_arr = _mm256_loadu_si256((const __m256i *)&arr[i]);
 
-    // Adds the base indices to the current index to get the indices of the
-    // elements in the array.
-    __m256i v_indices = _mm256_add_epi32(base_indices, _mm256_set1_epi32(i));
+    // Creates a vector containing the indices (i, i+1, i+2, etc.)
+    // We have to reverse the order of the indices to match the order of the
+    // elements in the array. Given how the AVX2 instructions work
+    // (loadu_si256), the first element of the vector will be the last element
+    // of the array.
+    __m256i v_indices =
+        _mm256_set_epi32(i + 7, i + 6, i + 5, i + 4, i + 3, i + 2, i + 1, i);
 
     // Multiplies each array element by its index in parallel
     __m256i v_products = _mm256_mullo_epi32(v_arr, v_indices);
 
-    total_sum = _mm256_add_epi32(total_sum, v_products);
+    // Extract integer byte or word from packed integer array
+    // element selected by index.
+    sum += _mm256_extract_epi32(v_products, 0) +
+           _mm256_extract_epi32(v_products, 1) +
+           _mm256_extract_epi32(v_products, 2) +
+           _mm256_extract_epi32(v_products, 3) +
+           _mm256_extract_epi32(v_products, 4) +
+           _mm256_extract_epi32(v_products, 5) +
+           _mm256_extract_epi32(v_products, 6) +
+           _mm256_extract_epi32(v_products, 7);
   }
-
-  // Extract lower and upper 128-bit lanes
-  __m128i sum128 = _mm_add_epi32(_mm256_extracti128_si256(total_sum, 0),
-                                 _mm256_extracti128_si256(total_sum, 1));
-
-  // Reduce final 4 elements in the 128-bit register
-  return _mm_extract_epi32(sum128, 0) + _mm_extract_epi32(sum128, 1) +
-         _mm_extract_epi32(sum128, 2) + _mm_extract_epi32(sum128, 3);
+  return sum;
 }
