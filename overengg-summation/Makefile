@@ -24,6 +24,10 @@ sum6:
 	g++ -O0 -mavx2 main.cpp sum6.cpp -o main -lbenchmark -lpthread -Iinclude
 	./main
 
+order:
+	g++ -O0 -mavx2 order.cpp -o main -lbenchmark -lpthread -Iinclude
+	./main
+
 clean:
 	rm main
 
