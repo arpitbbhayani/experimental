@@ -1,0 +1,15 @@
+syntax = "proto3";
+
+package p;
+option go_package = "./p";
+
+message Result {
+    string message = 2;
+    oneof response {
+        GETRes GETRes = 11;
+    }
+}
+
+message GETRes {
+    string value = 1;
+}
